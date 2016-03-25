@@ -1,0 +1,14 @@
+{
+  "name": "tanya-bomoh",
+  "version": "1.0.0",
+  "homepage": "https://github.com/anasceym/tanya-bomoh",
+  "authors": [
+    "anasceym <anasfirdauss@gmail.com>"
+  ],
+  "description": "Tanya bomog",
+  "license": "MIT",
+  "devDependencies": {
+    "bootstrap": "~3.3.6",
+    "fontawesome": "~4.5.0"
+  }
+}
