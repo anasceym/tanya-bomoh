@@ -30,7 +30,7 @@ window.TanyaBomoh = new Vue({
         ],
 
         disclaimers: [
-        	'Untuk keselamatan anda, anda dinasihati untuk tidak mendedahkan rahsia dan maklumat peribadi seperti <strong>alamat rumah</strong>, <strong>nombor telefon</strong>, <strong>nombor kad pengenalan</strong>, <strong>akaun bank</strong>, dan <strong>maklumat kad kredit</strong>. TanyaBomoh tidak bertanggungjawab jika sebarang maklumat seperti di atas dimasukkan di sini.',
+            'Untuk keselamatan anda, anda dinasihati untuk tidak mendedahkan rahsia dan maklumat peribadi seperti <strong>alamat rumah</strong>, <strong>nombor telefon</strong>, <strong>nombor kad pengenalan</strong>, <strong>akaun bank</strong>, dan <strong>maklumat kad kredit</strong>. TanyaBomoh tidak bertanggungjawab jika sebarang maklumat seperti di atas dimasukkan di sini.',
             'Jangan tinggal sembahyang 5 waktu',
             'Jauhi dan jangan amalkan syirik'
         ]
@@ -179,7 +179,7 @@ window.TanyaBomoh = new Vue({
             this.openModalJawapan();
         },
         openModalJawapan: function() {
-        	console.log(this.getIsAcceptedDisclaimer());
+            console.log(this.getIsAcceptedDisclaimer());
             if(this.isValidatedFields() && this.getIsAcceptedDisclaimer()) {
                 this.modalJawapan.modal(this.modalOptions);
             }
@@ -237,9 +237,9 @@ window.TanyaBomoh = new Vue({
             this.modalDisclaimer.modal('hide');
 
             if(isAcceptedDisclaimer) {
-            	this.modalJawapan.modal(this.modalOptions);
+                this.modalJawapan.modal(this.modalOptions);
             }
-        }
+        }    
     }, 
 
     events: {
