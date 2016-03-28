@@ -81,7 +81,8 @@ gulp.task('build-css', ['bower', 'icons', 'assets', 'css', 'images']);
  */
  var jsPaths = [
     path.join(config.bowerDir, 'jquery', 'dist', 'jquery.js'),
-    path.join(config.bowerDir, 'bootstrap', 'dist', 'js', 'bootstrap.js')
+    path.join(config.bowerDir, 'bootstrap', 'dist', 'js', 'bootstrap.js'),
+    path.join('resources', 'js', 'main.js')
  ];
 
 gulp.task('browserify', function() {
