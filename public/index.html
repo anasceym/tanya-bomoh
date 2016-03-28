@@ -142,7 +142,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Terima kasih</button>
+            <button v-if="!isLoading" type="button" class="btn btn-primary" data-dismiss="modal">Terima kasih</button>
           </div>
         </div>
       </div>
@@ -165,6 +165,27 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Faham</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-disclaimer" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Terma dan syarat</h4>
+          </div>
+          <div class="modal-body">
+            <p>Untuk menggunakan applikasi TanyaBomoh iaitu tanya soalan kepada bomoh secara virtual, anda diwajibkan untuk bersetuju dengan terma dan syarat-syarat berikut:</p>
+            <ul>
+                <li v-for="disclaimer in disclaimers">{{{disclaimer}}}</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" @click="buttonSetDisclaimerHandler(false, $event)">Tidak Setuju</button>
+            <button type="button" class="btn btn-primary" @click="buttonSetDisclaimerHandler(true, $event)">Setuju</button>
           </div>
         </div>
       </div>
