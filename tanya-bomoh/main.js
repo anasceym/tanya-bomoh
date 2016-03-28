@@ -27,7 +27,7 @@ window.TanyaBomoh = new Vue({
         	'Ana demam, ana tidak dapat menjawab pertanyaan anak. Minta maaf.',
         	'Ngiat ngen sonnn, matakaji sema ngi sengggg!',
         	'Hancurrrr, hancurrrr aaaakuuu (Fazura)',
-        ]
+        ],
     },
 
     components: {
@@ -154,6 +154,10 @@ window.TanyaBomoh = new Vue({
             e.preventDefault();
             this.modalPeringatan.modal(this.modalOptions);
         },
+        jawapanEnterHandler: function() {
+
+        	this.openModalJawapan();
+        },
         totalClear: function() {
 
             this.inputPengeras = '';
@@ -165,7 +169,11 @@ window.TanyaBomoh = new Vue({
 
             e.preventDefault();
 
-            if(this.isValidatedFields()) {
+            this.openModalJawapan();
+        },
+        openModalJawapan: function() {
+
+        	if(this.isValidatedFields()) {
                 this.modalJawapan.modal(this.modalOptions);
             }
         },
@@ -187,6 +195,15 @@ window.TanyaBomoh = new Vue({
         randomIntFromInterval: function(min,max)
 		{
 		    return Math.floor(Math.random()*(max-min+1)+min);
+		},
+		getIsAcceptedDisclaimer: function() {
+
+			if(typeof(Storage) !== "undefined") {
+				
+			    return sessionStorage.isAcceptedDisclaimer;
+			}
+			else
+				return false;
 		}
     }, 
 

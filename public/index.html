@@ -105,6 +105,7 @@
                         id="inputPertanyaan" 
                         placeholder="Pertanyaan" 
                         v-model="inputPertanyaan"
+                        @keyup.enter="jawapanEnterHandler"
                         v-el:inputPertanyaanDOM>
                     </div>
                 </div>
