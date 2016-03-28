@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>TanyaBomoh - Ask bomoh virtually</title>
+    <!-- Bootstrap core CSS -->
+    <link href="public/css/application.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="tanya-bomoh" role="document">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Tanya Bomoh</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <section class="section section-top">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Selamat datang ke Tanya Bomoh!</h1>
+                <p>Adakah anda ingin bertanya soalan? Adakah anda mencari jawapan kepada apa-apa persoalan? TanyaBomoh menyediakan ruang untuk anda tanya apa-apa jua soalan. Tetapi setiap pertanyaan mesti disertakan dengan pengeras. </p>
+                <a href="#" class="btn btn-primary btn-lg">Mula pertanyaan</a>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="row">
+              <div class="col-xs-12"><h1 class="text-center">Soalan-soalan Lazim</h1></div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="widget-with-icon">
+                        <i class="fa fa-heart"></i>
+                        <h2>Bagaimana untuk menyediakan pengeras?</h2>
+                        <p>Ini adalah sebahagian syarat untuk tanya bomoh secara virtual, tidak memerlukan ayam atau pulut kuning. Anda cuma hanya untuk taip <strong>{{defaultPengeras}}</strong> atau secara mudahnya hanya taip <strong>{{defaultPengerasShort}}</strong> di ruangan 'pengeras'.</p>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="widget-with-icon">
+                        <i class="fa fa-heart"></i>
+                        <h2>Bagaimana untuk bertanya soalan?</h2>
+                        <p>Sila tanya soalan yang berkaitan duniawi. Jika terdapat soalan yang bercanggah dengan akidah, pihak bomoh tidak teragak-agak untuk mengabaikan soalan itu.</p>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm-block"></div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="widget-with-icon">
+                        <i class="fa fa-heart"></i>
+                        <h2>Kenapa tanya bomoh secara virtual?</h2>
+                        <p>Teknologi dunia semakin pesat membangun. Persatuan Bomoh Sedunia tidak ketinggalan untuk menyediakan platform untuk bertanya bomoh secara virtual di atas talian.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h1 class="text-center">Tanya bomoh</h1>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputPengeras" class="col-sm-2 control-label">Pengeras</label>
+                    <div class="col-sm-10">
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="inputPengeras" 
+                          placeholder="Pengeras" 
+
+                          v-model="inputPengeras"
+                          @keyup.190="pengerasChangedHandler"
+                          @keydown.8="pengerasTryToDeleteHandler"
+                          @keyup.enter="pengerasChangedEnterHandler"
+                          v-el:inputPengerasDOM>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPertanyaan" class="col-sm-2 control-label">Pertanyaan</label>
+                    <div class="col-sm-10">
+                        <input type="text" 
+                        class="form-control" 
+                        id="inputPertanyaan" 
+                        placeholder="Pertanyaan" 
+                        v-model="inputPertanyaan"
+                        @keyup.enter="jawapanEnterHandler"
+                        v-el:inputPertanyaanDOM>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-12 text-right">
+                    <a href="#" class="btn btn-danger" @click="clearField">Kosongkan</a>
+                    <a href="#" class="btn btn-primary" @click="tanyaClickHandler">Tanya</a>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Persatuan Bomoh Sedunia </p>
+      </div>
+    </footer>
+
+    <div id="modal-jawapan" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Tanya Bomoh</h4>
+          </div>
+          <div class="modal-body">
+            <div v-if="isLoading" class="widget-loading">
+                <p>{{loadingText}}</p>
+                <i class="fa fa-spin fa-spinner"></i>
+            </div>
+            <div v-if="!isLoading" class="widget-jawapan">
+                <p class="soalan"><strong>Soalan : </strong>{{inputPertanyaan}}</p>
+                <p class="jawapan"><strong>Bomoh jawab : </strong>{{jawapanBomoh}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button v-if="!isLoading" type="button" class="btn btn-primary" data-dismiss="modal">Terima kasih</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-peringatan" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Peringatan!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Peringatan, untuk membuat pertanyaan kepada bomoh, anda diwajibkan menyediakan pengeras dengan betul dan hanya sekali taip. Jika ada kesalahan sila gunakan butang 'Kosongkan' dan perlu menaip semula pengeras.</p>
+            <p><strong>Pengeras yang diterima seperti berikut :</strong></p>
+            <ul>
+                <li>{{defaultPengerasShort}}</li>
+                <li>{{defaultPengeras}}</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Faham</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-disclaimer" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Terma dan syarat</h4>
+          </div>
+          <div class="modal-body">
+            <p>Untuk menggunakan applikasi TanyaBomoh iaitu tanya soalan kepada bomoh secara virtual, anda diwajibkan untuk bersetuju dengan terma dan syarat-syarat berikut:</p>
+            <ul>
+                <li v-for="disclaimer in disclaimers">{{{disclaimer}}}</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" @click="buttonSetDisclaimerHandler(false, $event)">Tidak Setuju</button>
+            <button type="button" class="btn btn-primary" @click="buttonSetDisclaimerHandler(true, $event)">Setuju</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="public/js/application.js"></script>
+</body>
+
+</html>

@@ -1,11 +1,11 @@
 bower_components/
 node_modules/
 
-/public/lib/*
-/public/assets/*
-/public/css/*
-/public/js/*
-/public/fonts/*
+##/public/lib/*
+##/public/assets/*
+##/public/css/*
+##/public/js/*
+##/public/fonts/*
 
 /resources/js/main.js
 
